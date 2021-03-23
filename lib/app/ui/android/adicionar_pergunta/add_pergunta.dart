@@ -5,7 +5,7 @@ class AddPerguntaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('My Page')),
+      appBar: AppBar(title: Text('Pergunta')),
       body: Container(
         child: Container(),
       ),

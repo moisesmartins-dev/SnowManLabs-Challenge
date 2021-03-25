@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:snow_man_labs_challenge_unoffi/app/ui/android/adicionar_pergunta/add_pergunta.dart';
-import 'package:snow_man_labs_challenge_unoffi/app/ui/android/home_page/home_page.dart';
+import 'file:///C:/Users/moisesmartins/AndroidStudioProjects/snow_man_labs_challenge_unoffi/lib/app/ui/screens/question_page.dart';
+import 'package:snow_man_labs_challenge_unoffi/app/ui/screens/home_page.dart';
 import 'app_routes.dart';
 
 class AppPages{

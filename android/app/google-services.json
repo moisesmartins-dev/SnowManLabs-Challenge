@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535423993337",
+    "project_id": "snow-1ea1c",
+    "storage_bucket": "snow-1ea1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535423993337:android:ed3ccf2b73afc23b34a928",
+        "android_client_info": {
+          "package_name": "com.martinsdev.snow_man_labs_challenge_unoffi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535423993337-qrk9jeato5tjf5qc1ja4t6mg05o1vc5g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_DG-ZLmvlXsGHbmvbfCoV0fyX5g5EskY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535423993337-qrk9jeato5tjf5qc1ja4t6mg05o1vc5g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

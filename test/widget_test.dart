@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:snow_man_labs_challenge_unoffi/app/ui/android/home_page/home_page.dart';
+import 'package:snow_man_labs_challenge_unoffi/app/ui/screens/home_page.dart';
 
 import 'package:snow_man_labs_challenge_unoffi/main.dart';
 

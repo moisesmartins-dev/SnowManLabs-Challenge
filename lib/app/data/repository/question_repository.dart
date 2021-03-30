@@ -7,8 +7,16 @@ import 'package:snow_man_labs_challenge_unoffi/app/data/provider/firebase_provid
 class QuestionRepository {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Stream<List<QuestionModel>>getAll() {
+  Stream<List<QuestionModel>> getAll() {
     return FirebaseProvider().getAllQuestions();
   }
-}
 
+  Stream<List<QuestionModel>> getAllSearch({String queryString}) {
+    return FirebaseProvider().getAllSearch(queryString);
+  }
+
+  Future<void> add(
+      {String title, String anwser, String color, String createdAt}) async {
+    return FirebaseProvider().addQuestion(title, anwser, color, createdAt);
+  }
+}

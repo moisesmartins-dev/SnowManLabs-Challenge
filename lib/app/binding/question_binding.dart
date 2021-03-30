@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:snow_man_labs_challenge_unoffi/app/controller/question_controller.dart';
+import 'package:snow_man_labs_challenge_unoffi/app/controller/home_controller.dart';
 
 class QuestionBinding implements Bindings {
   @override

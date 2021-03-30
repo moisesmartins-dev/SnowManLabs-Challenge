@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:snow_man_labs_challenge_unoffi/app/controller/question_controller.dart';
+import 'package:snow_man_labs_challenge_unoffi/app/controller/home_controller.dart';
 import 'package:snow_man_labs_challenge_unoffi/app/data/model/question_Model.dart';
 
 class CustomCard extends StatelessWidget {
@@ -15,6 +15,7 @@ class CustomCard extends StatelessWidget {
     final theme = Theme.of(context).copyWith(dividerColor: Colors.transparent);
 
     return ListView.builder(
+      padding: new EdgeInsets.fromLTRB(10, 20, 10, 10),
       itemCount: (question == null) ? 0 : question.length,
       itemBuilder: (_, index) {
         return Card(

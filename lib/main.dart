@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:snow_man_labs_challenge_unoffi/app/data/model/question_Model.dart';
+import 'package:snow_man_labs_challenge_unoffi/app/data/provider/firebase_provider.dart';
 import 'package:snow_man_labs_challenge_unoffi/app/routes/app_pages.dart';
 import 'package:snow_man_labs_challenge_unoffi/app/ui/theme/app_theme.dart';
 import 'app/binding/question_binding.dart';
@@ -22,7 +23,7 @@ Future<void> main() async {
       defaultTransition: Transition.fade,
       getPages: AppPages.routes,
       theme: AppTheme,
-      home: HomePage(),
+      home: AddPerguntaPage(),
     ),
   );
 }

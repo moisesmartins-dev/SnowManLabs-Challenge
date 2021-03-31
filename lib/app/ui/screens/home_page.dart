@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                   'Adicionar Pergunta',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Color(0xff10159A),
+                      color: Color(0xffFFBE00),
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold),
                 ),

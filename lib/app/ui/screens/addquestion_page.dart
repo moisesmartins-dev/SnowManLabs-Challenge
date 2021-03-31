@@ -29,7 +29,6 @@ class AddPerguntaPage extends StatelessWidget {
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Card(
-          margin: EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
               children: [

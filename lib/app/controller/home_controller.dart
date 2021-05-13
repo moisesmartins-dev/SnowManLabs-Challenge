@@ -8,25 +8,19 @@ class QuestionController extends GetxController {
   Rx<List<QuestionModel>> questionList = Rx<List<QuestionModel>>();
   Rx<List<QuestionModel>> questionSearchList = Rx<List<QuestionModel>>();
   TextEditingController searchController = TextEditingController();
-  QuestionModel questionModel;
   RxBool _isSearching = false.obs;
 
   get isSearching => this._isSearching.value;
+
   set isSearching(value) => this._isSearching.value = value;
 
   List<QuestionModel> get question => questionList.value;
 
+  List<QuestionModel> get questionSList => questionSearchList.value;
+
+
   getAll() {
     questionList.bindStream(QuestionRepository().getAll());
-  }
-
-  getAllSearch(String queryString) {
-    questionSearchList.bindStream(QuestionRepository().getAllSearch(queryString: searchController.text));
-  }
-
-  activeBarSearch() {
-    isSearching = !isSearching;
-    searchController.addListener(onSearchChanged);
   }
 
   @override
@@ -35,8 +29,23 @@ class QuestionController extends GetxController {
     super.onInit();
   }
 
+  activeBarSearch() {
+    isSearching = !isSearching;
+    searchController.addListener(onSearchChanged);
+  }
+
+  search(value) {
+    questionSearchList.value = questionList.value
+        .where((q) => (q.title
+                .toLowerCase()
+                .contains(value.toString().toLowerCase()) ||
+            q.anwser.toLowerCase().contains(value.toString().toLowerCase())))
+        .toList();
+    return questionSearchList.value;
+  }
+
   onSearchChanged() {
-    getAllSearch(searchController.text);
     print("Texto pesquisa ${searchController.text}");
+    // print(questionSearchList.value[0].title);
   }
 }

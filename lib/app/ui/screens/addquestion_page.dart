@@ -8,8 +8,6 @@ class AddPerguntaPage extends StatelessWidget {
   final AddQuestionController _addQuestionController =
       Get.put(AddQuestionController());
 
-  List<bool> isSelected = [false, false, false, false];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +27,7 @@ class AddPerguntaPage extends StatelessWidget {
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Card(
+          margin: EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -39,6 +38,7 @@ class AddPerguntaPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                         child: TextFormField(
+                          autofocus: true,
                           controller:
                               _addQuestionController.questionTxtEditController,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -51,8 +51,10 @@ class AddPerguntaPage extends StatelessWidget {
                           maxLines: null,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey.withOpacity(0.5))),
+                              borderSide: BorderSide(
+                                color: Colors.grey.withOpacity(0.5),
+                              ),
+                            ),
                             fillColor: Colors.grey,
                             labelText: 'Título da Pergunta',
                             labelStyle: TextStyle(
@@ -81,8 +83,10 @@ class AddPerguntaPage extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Colors.grey.withOpacity(0.5))),
+                              borderSide: BorderSide(
+                                color: Colors.grey.withOpacity(0.5),
+                              ),
+                            ),
                             fillColor: Colors.grey,
                             labelText: 'Resposta da Pergunta',
                             labelStyle: TextStyle(
@@ -112,60 +116,51 @@ class AddPerguntaPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              _addQuestionController
-                                  .selectedColorChange("0xff46C9A7");
-                            },
-                            child: Visibility(
-                              child: Icon(Icons.done),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              side: BorderSide(color: Colors.white),
-                              primary: Color(0xff46C9A7),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              _addQuestionController
-                                  .selectedColorChange("0xffFF7074");
-                            },
-                            child: Icon(Icons.done),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              side: BorderSide(color: Colors.white),
-                              primary: Color(0xffFF7074),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              _addQuestionController
-                                  .selectedColorChange("0xffFFBE00");
-                            },
-                            child: Icon(Icons.done),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              side: BorderSide(color: Colors.white),
-                              primary: Color(0xffFFBE00),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              _addQuestionController
-                                  .selectedColorChange("0xff10159A");
-                            },
-                            child: Icon(Icons.done),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              side: BorderSide(color: Colors.white),
-                              primary: Color(0xff10159A),
-                            ),
-                          ),
-                        ],
+                      SizedBox(
+                        height: 50,
+                        child: GetX<AddQuestionController>(
+                          builder: (_) {
+                            return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount:
+                                  _addQuestionController.listColor.length,
+                              itemBuilder: (_, index) {
+                                return Container(
+                                  child: Center(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        _addQuestionController
+                                            .selectedColorChange(index);
+                                        print(index);
+                                      },
+                                      child: GetX<AddQuestionController>(
+                                        builder: (_) => Icon(
+                                          Icons.done,
+                                          color: index == _.selectedColor
+                                              ? Colors.white
+                                              : Colors.transparent,
+                                        ),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        padding:
+                                            EdgeInsets.only(right: 20, left: 20),
+                                        shape: CircleBorder(),
+                                        elevation: 0,
+                                        alignment: Alignment.center,
+                                        minimumSize: Size(40, 40),
+                                        side: BorderSide(color: Colors.white,width: 2),
+                                        primary: Color(_addQuestionController
+                                            .listColor[index]),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ),
                       Container(
                         padding: EdgeInsets.only(top: 30),
@@ -173,49 +168,23 @@ class AddPerguntaPage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(0),
-                                  topRight: Radius.circular(0),
-                                  bottomRight: Radius.circular(4),
-                                  bottomLeft: Radius.circular(4)),
+                                bottomRight: Radius.circular(4),
+                                bottomLeft: Radius.circular(4),
+                              ),
                             ),
                             primary: Color(0xffFFBE00),
                             elevation: 0.1,
                           ),
                           onPressed: () {
-                            FocusScope.of(context).requestFocus(new FocusNode());
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
                             if (_addQuestionController.formKey.currentState
                                 .validate()) {
                               if (_addQuestionController.selectedColor
-                                  .toString()
-                                  .isEmpty == true) {
-                                Get.snackbar(
-                                  "",
-                                  "",
-                                  titleText: Text(
-                                    "Erro ao adicionar a pergunta!",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  messageText: Text(
-                                    "Selecione uma cor.",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  backgroundColor: Colors.red,
-                                  maxWidth: double.infinity,
-                                  margin: EdgeInsets.zero,
-                                  snackPosition: SnackPosition.BOTTOM,
-                                  snackStyle: SnackStyle.GROUNDED,
-                                  icon: Icon(
-                                    Icons.error,
-                                    color: Colors.white,
-                                  ),
-                                );
-                              } else{
+                                      .toString()
+                                      .isEmpty ==
+                                  true) {
+                              } else {
                                 _addQuestionController.add();
                                 Get.back();
                                 Get.snackbar(
@@ -239,15 +208,6 @@ class AddPerguntaPage extends StatelessWidget {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  // mainButton: TextButton(
-                                  //   onPressed: () {},
-                                  //   child: Text(
-                                  //     "Ver Pergunta",
-                                  //     style: TextStyle(
-                                  //         color: Colors.white,
-                                  //         fontWeight: FontWeight.bold),
-                                  //   ),
-                                  // ),
                                   snackPosition: SnackPosition.BOTTOM,
                                   snackStyle: SnackStyle.GROUNDED,
                                   icon: Icon(

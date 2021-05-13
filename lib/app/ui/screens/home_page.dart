@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,12 +7,10 @@ import 'package:snow_man_labs_challenge_unoffi/app/ui/widgets/custom_card.dart';
 //Color(0xff10159A)
 
 class HomePage extends StatelessWidget {
-  final Future<FirebaseApp> _firebaseApp = Firebase.initializeApp();
   final QuestionController _questionController = Get.put(QuestionController());
 
   @override
   Widget build(BuildContext context) {
-    // deixar transparente cor
     return Scaffold(
       appBar: AppBar(
         backwardsCompatibility: false,
@@ -58,6 +55,9 @@ class HomePage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
+                      onChanged: (value) {
+                        _.search(value);
+                      },
                     ),
                   )
                 : Text("Pergunta Frequentes");
@@ -85,21 +85,26 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         // padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
-        child: GetX<QuestionController>(builder: (_) {
-          return _.questionList != null
-              ? CustomCard(
-                  //if
-                  question: _.question,
-                )
-              : Center(
-                  //else
-                  child: CircularProgressIndicator(),
-                );
-        }),
+        child: GetX<QuestionController>(
+          builder: (_) {
+            return _.questionList != null
+                ? CustomCard(
+                    question:
+                        _.isSearching == false ? _.question : _.questionSList,
+                  )
+                : Center(
+                    //else
+                    child: CircularProgressIndicator(),
+                  );
+          },
+        ),
+
       ),
+      extendBody: true,
       bottomNavigationBar: Container(
+        color: Colors.transparent,
         padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
-      child: ElevatedButton(
+        child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             primary: Color(0xffFFBE00),
             elevation: 0,
@@ -115,7 +120,7 @@ class HomePage extends StatelessWidget {
                   'Adicionar Pergunta',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Color(0xffFFBE00),
+                      color: Color(0xff10159A),
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold),
                 ),

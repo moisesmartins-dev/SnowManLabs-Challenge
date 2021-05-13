@@ -3,7 +3,9 @@
 flutter_native_splash:
   background_image: assets/image/splash/splash.png
   fullscreen: true
-#  android_gravity: center
+
+
+    #  android_gravity: center
 
     # This package generates native code to customize Flutter's default white native splash screen
     # with background color and splash image.
@@ -73,3 +75,4 @@ flutter_native_splash:
     #info_plist_files:
     #  - 'ios/Runner/Info-Debug.plist'
     #  - 'ios/Runner/Info-Release.plist'
+

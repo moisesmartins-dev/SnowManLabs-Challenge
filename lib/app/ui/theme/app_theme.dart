@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-final AppTheme = ThemeData(platform: TargetPlatform.iOS);
+final appTheme = ThemeData(platform: TargetPlatform.iOS);

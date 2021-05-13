@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:snow_man_labs_challenge_unoffi/app/data/model/question_Model.dart';
-import 'package:intl/intl.dart';
 
 class FirebaseProvider {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -28,6 +27,16 @@ class FirebaseProvider {
   // ignore: missing_return
   Stream<List<QuestionModel>> getAllSearch(String queryString)  {
       try {
+        // FirebaseFirestore.instance
+        //     .collection('question')
+        //     .orderBy('createdAt')
+        //     .startAt([queryString])
+        //     .endAt([queryString])
+        //     .get()
+        //     .then((snapshot) {
+        //       print(snapshot.docs);
+        //   return snapshot.docs;
+        // });
       _firestore
           .collection('question').where('title', isEqualTo: queryString)
           .orderBy('createdAt', descending: false)
@@ -38,6 +47,8 @@ class FirebaseProvider {
       rethrow;
     }
   }
+
+
 
   Future addQuestion(
       String title, String anwser, String color, String timeStamp) async {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 //TODO Text("Perguntas Frequentes") IN APPBAR
 
@@ -21,7 +20,7 @@ class CustomAppBarPage extends StatelessWidget {
               prefixIcon: Icon(
                 Icons.search,
                 color: Colors.white,
-              ),
+                ),
               suffixIcon: IconButton(
                 icon: Row(
                   children: [

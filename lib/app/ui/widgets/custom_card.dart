@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:snow_man_labs_challenge_unoffi/app/controller/home_controller.dart';
 import 'package:snow_man_labs_challenge_unoffi/app/data/model/question_Model.dart';
 
 class CustomCard extends StatelessWidget {
@@ -15,7 +13,8 @@ class CustomCard extends StatelessWidget {
     final theme = Theme.of(context).copyWith(dividerColor: Colors.transparent);
 
     return ListView.builder(
-      padding: new EdgeInsets.fromLTRB(10, 20, 10, 10),
+      padding: new EdgeInsets.fromLTRB(10, 20, 10, 70),
+      shrinkWrap: true,
       itemCount: (question == null) ? 0 : question.length,
       itemBuilder: (_, index) {
         return Card(
@@ -42,7 +41,7 @@ class CustomCard extends StatelessWidget {
               // TODO esse padding regula a lagura da cor lateral do card
               padding: const EdgeInsets.only(left: 2),
               child: Container(
-                padding: EdgeInsets.only(top: 5,bottom: 5),
+                padding: EdgeInsets.only(top: 5, bottom: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   //TODO cor do card
@@ -51,6 +50,7 @@ class CustomCard extends StatelessWidget {
                 child: Theme(
                   data: theme,
                   child: ExpansionTile(
+
                     childrenPadding: EdgeInsets.only(left: 5, bottom: 15),
                     title: Text(
                       question[index].title,
